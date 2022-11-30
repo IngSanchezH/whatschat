@@ -1,5 +1,5 @@
 var url = window.location.href;
-var swLocation = '/whastchat/public/sw.js';
+var swLocation = 'sw.js';
 var swReg;
 if ( navigator.serviceWorker ) {
     if ( url.includes('localhost') ) {
@@ -25,27 +25,23 @@ var avatarSel   = $('#seleccion');
 var timeline    = $('.timeline');
 var menu    = $('.menu');
 var menuOpc    = $('#menu-opcion');
-
 var modal       = $('#modal');
 var modalAvatar = $('#modal-avatar');
 var avatarBtns  = $('.seleccion-avatar');
 var txtMensaje  = $('#txtMensaje');
-
 var btnActivadas    = $('.btn-noti-activadas');
 var btnDesactivadas = $('.btn-noti-desactivadas');
-
 var btnLocation      = $('#location-btn');
 var modalMapa        = $('.mapa-contenedor');
-
 var btnTomarFoto     = $('#tomar-foto-btn');
 var btnPhoto         = $('#photo-btn');
 var contenedorCamara = $('.camara-contenedor');
 var cerrar         = $('.cerrar');
-
 var lat  = null;
 var lng  = null; 
 var foto = null; 
-var nuevomapa = null; 
+var nuevomapa = null;
+
 // El usuario
 var usuario = "Feliciano";
 const camara = new Camara($('#player')[0]);
@@ -155,7 +151,6 @@ function logIn( ingreso ) {
 
 }
 
-
 // Seleccion de personaje
 avatarBtns.on('click', function() {
     usuario = $(this).data('user');
@@ -208,14 +203,14 @@ postBtn.on('click', function() {
         lat: lat,
         lng: lng,
         foto: foto
-    };
-    fetch('api', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify( data )
-    })
+    }
+    // fetch('api', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify( data )
+    // })
     .then( res => res.json() )
     .then( res => console.log( 'app.js', res ))
     .catch( err => console.log( 'app.js error:', err ));
@@ -227,7 +222,6 @@ postBtn.on('click', function() {
     crearMensajeHTML( mensaje, usuario, lat, lng, foto );
     foto = null;
 });
-
 
 
 // Obtener mensajes del servidor
