@@ -203,14 +203,14 @@ postBtn.on('click', function() {
         lat: lat,
         lng: lng,
         foto: foto
-    }
-    // fetch('api', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify( data )
-    // })
+    };
+    fetch('api', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( data )
+    })
     .then( res => res.json() )
     .then( res => console.log( 'app.js', res ))
     .catch( err => console.log( 'app.js error:', err ));
