@@ -1,5 +1,5 @@
 var url = window.location.href;
-var swLocation = '../sw.js';
+var swLocation = '/whastchat/public/sw.js';
 var swReg;
 if ( navigator.serviceWorker ) {
     if ( url.includes('localhost') ) {
