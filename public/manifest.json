@@ -2,8 +2,8 @@
     "short_name": "WhatsChat",
     "name": "WhatsChat",
     "start_url": "index.html",
-    "background_color": "#3498db",
-    "theme_color": "#3498db",
+    "background_color": "#075E54",
+    "theme_color": "#075E54",
     "display": "standalone",
     "orientation": "portrait",
     "icons": [

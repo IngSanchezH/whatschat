@@ -1,7 +1,7 @@
 class Camara{
     constructor(VideoNode){
         this.VideoNode = VideoNode;
-        console.log('Camara inicializada');
+        //console.log('Camara inicializada');
     }
 
     encender(){

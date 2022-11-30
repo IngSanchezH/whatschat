@@ -1,5 +1,5 @@
 var url = window.location.href;
-var swLocation = '/WhatsChat/sw.js';
+var swLocation = '../sw.js';
 var swReg;
 if ( navigator.serviceWorker ) {
     if ( url.includes('localhost') ) {
@@ -13,8 +13,8 @@ if ( navigator.serviceWorker ) {
     });
 }
 
-// Referencias de jQuery
-var googleMapKey = 'AIzaSyA5mjCwx1TRLuBAjwQw84WE6h5ErSe7Uj8';
+// Referencias de jQuery - AIzaSyCVH2nGlz9tIuQnw8MyDhLv7Nj-jDoY2d0 - AIzaSyA5mjCwx1TRLuBAjwQw84WE6h5ErSe7Uj8
+var googleMapKey = 'AIzaSyD9US0r6NA85ONr1H8yGjlnhWPPAc3XRa8';
 
 var titulo      = $('#titulo');
 var nuevoBtn    = $('#nuevo-btn');
@@ -46,18 +46,11 @@ var lat  = null;
 var lng  = null; 
 var foto = null; 
 var nuevomapa = null; 
-
 // El usuario
 var usuario = "Feliciano";
-
 const camara = new Camara($('#player')[0]);
-
-// ===== Codigo de la aplicación
-
+// ===== Codigo de la 
 function crearMensajeHTML(mensaje, personaje, lat, lng, foto) {
-
-     //console.log(mensaje, personaje, lat, lng);
-
     var content =`
     <li class="animated fadeIn delay-1s">
         <div class="bubble-container">
@@ -253,18 +246,14 @@ function isOnline() {
     if ( navigator.onLine ) {
         // tenemos conexión
         // console.log('online');
-        $.mdtoast('Online', {
-            interaction: true,
-            interactionTimeout: 1000,
-            actionText: 'OK!'
-        });
+        $('#line').removeClass('offline');
+        $('#line').addClass('online');
+        document.getElementById('line').innerHTML = '<i class="fas fa-signal"></i> Online';
     } else{
-        // No tenemos conexión
-        $.mdtoast('Offline', {
-            interaction: true,
-            actionText: 'OK',
-            type: 'warning'
-        });
+        $('#line').removeClass('online');
+        $('#line').addClass('offline');
+        // console.log('Offline');
+        document.getElementById('line').innerHTML = '<i class="fas fa-signal"></i> Offline';
     }
 }
 window.addEventListener('online', isOnline );
@@ -293,25 +282,6 @@ function enviarNotificacion() {
     };
 }
 
-function notificarme() {
-    if ( !window.Notification ) {
-        console.log('Este navegador no soporta notificaciones');
-        return;
-    }
-    if ( Notification.permission === 'granted' ) {
-        // new Notification('Hola Mundo! - granted');
-        enviarNotificacion();
-
-    } else if ( Notification.permission !== 'denied' || Notification.permission === 'default' )  {
-        Notification.requestPermission( function( permission ) {
-            console.log( permission );
-            if ( permission === 'granted' ) {
-                // new Notification('Hola Mundo! - pregunta');
-                enviarNotificacion();
-            }
-        });
-    }
-}
 // Get Key
 function getPublicKey() {
     // fetch('api/key')
@@ -382,7 +352,7 @@ btnLocation.on('click', () => {
     });
     //console.log('Botón geolocalización');
     navigator.geolocation.getCurrentPosition(pos => {
-        console.log(pos);
+        // console.log(pos);
         mostrarMapaModal(pos.coords.latitude, pos.coords.longitude);
         lat = pos.coords.latitude;
         lng = pos.coords.longitude;
@@ -406,10 +376,10 @@ btnPhoto.on('click', () => {
 
 // Boton para tomar la foto
 btnTomarFoto.on('click', () => {
-    console.log('Botón tomar foto');
+    //console.log('Botón tomar foto');
     foto = camara.tomarFoto();
     camara.apagar();
-    console.log(foto);
+    //console.log(foto);
 
     $(txtMensaje).val("Mi foto");
 });

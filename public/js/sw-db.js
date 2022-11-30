@@ -1,5 +1,5 @@
 // Utilidades para grabar PouchDB
-const db = new PouchDB('mensajes');
+const db = new PouchDB('mensaje');
 function guardarMensaje( mensaje ) {
     mensaje._id = new Date().toISOString();
     return db.put( mensaje ).then( () => {
